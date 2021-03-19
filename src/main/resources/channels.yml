@@ -1,0 +1,52 @@
+defaultChannel: "global"
+partyChannel: "party"
+
+global:
+  prefix: "&f[Global]"
+  range: -1
+  channelShortcut: "/g"
+  permission: "ChatUtilities.channel.global"
+  isPrivate: false
+  textColour: "&f"
+
+trade:
+  prefix: "&e[Trade]"
+  range: -1
+  channelShortcut: "/t"
+  permission: "ChatUtilities.channel.trade"
+  isPrivate: false
+  textColour: "&e"
+
+
+local:
+  prefix: "&3[Local]"
+  range: 100
+  channelShortcut: "/l"
+  permission: "ChatUtilities.channel.local"
+  isPrivate: true
+  textColour: "&3"
+
+help:
+  prefix: "&b[Help]"
+  range: -1
+  channelShortcut: "/h"
+  permission: "ChatUtilities.channel.help"
+  isPrivate: false
+  textColour: "&b"
+
+staff:
+  prefix: "&a[staff]"
+  range: -1
+  channelShortcut: "/st"
+  permission: "ChatUtilities.channel.staff"
+  isPrivate: true
+  textColour: "&a"
+
+
+party:
+  prefix: "&6[Party]"
+  range: -1
+  channelShortcut: "/p"
+  permission: "ChatUtilities.channel.party"
+  isPrivate: true
+  textColour: "&6"

@@ -1,0 +1,63 @@
+main: ${project.groupId}.${project.artifactId}
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+api-version: 1.16
+depend: [Vault]
+
+commands:
+  cc:
+    usage: </changeChannel>
+    description: Change your channel.
+    permission: ChatUtilities.channels.changeChannel
+    permission-message: You don't have permission to use this command
+  setChannel:
+    usage: </setChannel> <player name> <channel name>
+    description: Set the channel of a player.
+    permission: ChatUtilities.channels.setChannel
+    permission-message: You don't have permission to use this command
+  createParty:
+    usage: </createParty> <party name>
+    description: Create a party.
+    permission: ChatUtilities.party.createParty
+    permission-message: You don't have permission to use this command
+  inviteToParty:
+    usage: </inviteToParty> <player name>
+    description: Invite someone to your party.
+    permission: ChatUtilities.party.inviteToParty
+    permission-message: You don't have permission to use this command
+  joinParty:
+    usage: </joinParty> <player name>
+    description: Join a party.
+    permission: ChatUtilities.party.joinParty
+    permission-message: You don't have permission to use this command
+  kickFromParty:
+    usage: </kickFromParty> <player name>
+    description: Kick someone from the party.
+    permission: ChatUtilities.party.kickFromParty
+    permission-message: You don't have permission to use this command
+  leaveParty:
+    usage: </leaveParty>
+    description: Leave from the party
+    permission: ChatUtilities.party.leaveParty
+    permission-message: You don't have permission to use this command
+  unIgnore:
+    usage: </acceptMessages> <player name>
+    description: Accept messages again from a player
+    permission: ChatUtilities.acceptMessages
+    permission-message: You don't have permission to use this command
+  ignore:
+    usage: </ignorePlayer> <player name>
+    description: Ignore a player
+    permission: ChatUtilities.ignorePlayer
+    permission-message: You don't have permission to use this command
+  broadcast:
+    usage: </broadcast> <message>
+    description: Broad cast a message to the server
+    permission: ChatUtilities.broadcast
+    permission-message: You don't have permission to use this command
+  ccList:
+    usage: </listChannels>
+    description: List all available channels
+    permission: ChatUtilitiles.listchannels
+    permission-message: You don't have permission to use this command

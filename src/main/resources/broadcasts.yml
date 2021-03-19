@@ -1,0 +1,5 @@
+broadcastDelay: 180 #in seconds
+messages:
+  - "&7Don't forget to vote"
+  - "&7Please follow the rules"
+  - "&7Have fun"

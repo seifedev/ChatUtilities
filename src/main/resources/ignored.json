@@ -1,0 +1,11 @@
+{
+  "ignoredByUuid": {
+    "ignoredByUsername": "username",
+    "ignores": {
+      "ignoredUuid": {
+        "ignoredUsername": "username",
+        "channel": []
+      }
+    }
+  }
+}
