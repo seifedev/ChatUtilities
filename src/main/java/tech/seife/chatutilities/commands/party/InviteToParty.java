@@ -1,17 +1,16 @@
 package tech.seife.chatutilities.commands.party;
 
-import tech.seife.chatutilities.ChatUtilities;
-import tech.seife.chatutilities.party.Party;
-import tech.seife.chatutilities.utils.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.enums.ReplaceType;
+import tech.seife.chatutilities.party.Party;
+import tech.seife.chatutilities.utils.MessageManager;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public final class InviteToParty implements CommandExecutor {
 
@@ -49,7 +48,14 @@ public final class InviteToParty implements CommandExecutor {
     }
 
     private void sendInvitationsMessages(Player inviter, Player invited, String partyName) {
-        invited.sendMessage("You have been invited by: " + inviter.getName() + " to join the party: " + partyName);
-        inviter.sendMessage(MessageManager.getTranslatedMessage(plugin, "invitedToPartySender"));
+        Map<ReplaceType, String> values = new HashMap<>();
+
+        values.put(ReplaceType.PARTY_NAME, partyName);
+        values.put(ReplaceType.PLAYER_NAME, inviter.getDisplayName());
+        values.put(ReplaceType.PLAYER_NAME, invited.getDisplayName());
+
+        inviter.sendMessage(MessageManager.getTranslatedMessage(plugin, "invitedToPartyReceiver", values));
+        inviter.sendMessage(MessageManager.getTranslatedMessage(plugin, "invitedToPartySender", values));
+
     }
 }

@@ -112,8 +112,6 @@ public final class IgnoreManager {
 
             if (ignoresSubSectionUuid != null) {
 
-                JsonArray array = ignoresSubSectionUuid.getAsJsonArray("channels");
-
                 Set<String> channelSet = gson.fromJson(ignoresSubSectionUuid.getAsJsonArray("channels"), Set.class);
 
                 if (channelSet.contains(channel.getName())) {

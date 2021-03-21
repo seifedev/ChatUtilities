@@ -1,12 +1,16 @@
 package tech.seife.chatutilities.commands.channels;
 
-import tech.seife.chatutilities.ChatUtilities;
-import tech.seife.chatutilities.utils.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.enums.ReplaceType;
+import tech.seife.chatutilities.utils.MessageManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class SetChannelOthers extends ChangeChannels implements CommandExecutor {
 
@@ -25,7 +29,12 @@ public final class SetChannelOthers extends ChangeChannels implements CommandExe
 
             if (player != null && args[0] != null) {
                 changePlayerChannel(player.getUniqueId(), args[1]);
-                sender.sendMessage(MessageManager.getTranslatedMessage(plugin, "forcedChannelChangeSender"));
+
+                Map<ReplaceType, String> values = new HashMap<>();
+                values.put(ReplaceType.CHANNEL, args[1]);
+                values.put(ReplaceType.PLAYER_NAME, player.getName());
+
+                sender.sendMessage(MessageManager.getTranslatedMessage(plugin, "forcedChannelChangeSender", values));
             }
         }
         return true;

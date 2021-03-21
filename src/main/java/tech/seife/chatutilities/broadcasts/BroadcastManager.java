@@ -36,7 +36,7 @@ public final class BroadcastManager {
         if (plugin.getCustomFiles().getBroadcastingConfig() != null) {
             return plugin.getCustomFiles().getBroadcastingConfig().getStringList("messages");
         }
-        return Arrays.asList("Empty for now", "Fill the config");
+        return plugin.getCustomFiles().getTranslationsConfig().getStringList("EmptyBroadcastConfig");
     }
 
     private long getDelay() {

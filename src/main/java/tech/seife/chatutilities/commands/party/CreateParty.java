@@ -1,11 +1,15 @@
 package tech.seife.chatutilities.commands.party;
 
-import tech.seife.chatutilities.ChatUtilities;
-import tech.seife.chatutilities.utils.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.enums.ReplaceType;
+import tech.seife.chatutilities.utils.MessageManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class CreateParty implements CommandExecutor {
 
@@ -22,7 +26,11 @@ public final class CreateParty implements CommandExecutor {
 
             if (plugin.getPartyManager().getPartyFromPlayer(player) == null) {
                 plugin.getPartyManager().createParty(player, args[0]);
-                player.sendMessage(MessageManager.replacePartyName(MessageManager.getTranslatedMessage(plugin, "partyCreation"), args[0]));
+
+                Map<ReplaceType, String> values = new HashMap<>();
+                values.put(ReplaceType.PARTY_NAME, args[0]);
+
+                player.sendMessage(MessageManager.getTranslatedMessage(plugin, "partyCreation", values));
             }
         }
         return true;

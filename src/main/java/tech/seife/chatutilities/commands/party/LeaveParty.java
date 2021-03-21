@@ -1,11 +1,15 @@
 package tech.seife.chatutilities.commands.party;
 
-import tech.seife.chatutilities.ChatUtilities;
-import tech.seife.chatutilities.utils.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.enums.ReplaceType;
+import tech.seife.chatutilities.utils.MessageManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class LeaveParty implements CommandExecutor {
 
@@ -24,7 +28,11 @@ public final class LeaveParty implements CommandExecutor {
             } else {
                 plugin.getPartyManager().removeMember(plugin.getPartyManager().getPartyFromPlayer(player), player);
             }
-            player.sendMessage(MessageManager.getTranslatedMessage(plugin, "leaveParty"));
+
+            Map<ReplaceType, String> values = new HashMap<>();
+            values.put(ReplaceType.PLAYER_NAME, args[0]);
+
+            player.sendMessage(MessageManager.getTranslatedMessage(plugin, "leaveParty", values));
         }
         return true;
     }

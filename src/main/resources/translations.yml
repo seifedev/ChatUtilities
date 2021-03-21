@@ -7,5 +7,13 @@ invitedToPartySender: "You send a party invite to %player%."
 joinedThePartyPlayer: "You have joined %partyName%"
 joinedPartyConfirmation: "%player has joined your party"
 successfullyKicked: "You have successfully kicked the player from the party."
-kickedFromTheParty: "%player% has been kicked from party."
+kickedFromTheParty: "%partyName% has been kicked from party."
 leaveParty: "You have left %partyName% party"
+ignored: "%player% is now ignoring you"
+toIgnored: "You are now ignoring %player"
+toUnignored: "You are no longer ignored by %player%"
+unIgnore: "You are no longer ignoring the %player%"
+denyMessage: "Please don't spam! wait a bit before sending the same message."
+EmptyBroadcastConfig:
+  - The broadcasting config is empty
+  - Please fill it to broadcast messages.

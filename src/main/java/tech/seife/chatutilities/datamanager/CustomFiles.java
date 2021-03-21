@@ -1,11 +1,12 @@
-package tech.seife.chatutilities.dao;
+package tech.seife.chatutilities.datamanager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import tech.seife.chatutilities.ChatUtilities;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import tech.seife.chatutilities.ChatUtilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -50,6 +52,23 @@ public final class CustomFiles {
         translationsFile = new File(plugin.getDataFolder(), "translations.yml");
         translationsConfig = new YamlConfiguration();
         createFile(translationsFile, translationsConfig, "translations.yml");
+    }
+
+    public void transformBannedWords() {
+        plugin.getLogger().log(Level.INFO, "Turning all banned words to lower case.");
+
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+            List<String> bannedWords = bannedWordsConfig.getStringList("bannedWords");
+
+            bannedWords.replaceAll(String::toLowerCase);
+            bannedWordsConfig.set("bannedWords", bannedWords);
+
+            try {
+                bannedWordsConfig.save(bannedWordsFile);
+            } catch (IOException e) {
+                plugin.getLogger().log(Level.WARNING, "Couldn't save the transformed banned words!", e.getMessage());
+            }
+        });
     }
 
     private void createFile(File file, FileConfiguration config, String resourceName) {

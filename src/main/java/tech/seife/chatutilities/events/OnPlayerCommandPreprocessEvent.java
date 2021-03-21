@@ -3,12 +3,11 @@ package tech.seife.chatutilities.events;
 import net.milkbowl.vault.permission.Permission;
 import tech.seife.chatutilities.ChatUtilities;
 import tech.seife.chatutilities.channels.Channel;
-import tech.seife.chatutilities.dao.DataHolder;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import tech.seife.chatutilities.dao.spamfilter.SpamFilterManager;
+import tech.seife.chatutilities.datamanager.spamfilter.SpamFilterManager;
 
 public final class OnPlayerCommandPreprocessEvent extends ChatManager implements Listener {
 

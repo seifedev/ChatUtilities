@@ -1,6 +1,4 @@
-package tech.seife.chatutilities.dao.spamfilter;
-
-import org.bukkit.entity.Player;
+package tech.seife.chatutilities.datamanager.spamfilter;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

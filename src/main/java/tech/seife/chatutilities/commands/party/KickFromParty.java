@@ -1,12 +1,19 @@
 package tech.seife.chatutilities.commands.party;
 
-import tech.seife.chatutilities.ChatUtilities;
-import tech.seife.chatutilities.utils.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Player;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.enums.ReplaceType;
+import tech.seife.chatutilities.party.Party;
+import tech.seife.chatutilities.party.PartyManager;
+import tech.seife.chatutilities.utils.MessageManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class KickFromParty implements CommandExecutor {
 
@@ -22,11 +29,18 @@ public final class KickFromParty implements CommandExecutor {
             Player owner = (Player) sender;
             Player playerToKick = Bukkit.getPlayer(args[0]);
 
-            if (plugin.getPartyManager().isPlayerOwner(owner)) {
-                plugin.getPartyManager().removeMember(plugin.getPartyManager().getPartyFromPlayer(owner), playerToKick);
+            PartyManager partyManager = plugin.getPartyManager();
 
-                owner.sendMessage(MessageManager.getTranslatedMessage(plugin, "successfullyKicked"));
-                playerToKick.sendMessage(MessageManager.getTranslatedMessage(plugin, "kickedFromTheParty"));
+            if (partyManager.isPlayerOwner(owner)) {
+                partyManager.removeMember(plugin.getPartyManager().getPartyFromPlayer(owner), playerToKick);
+
+
+                Map<ReplaceType, String> values = new HashMap<>();
+                values.put(ReplaceType.PLAYER_NAME, args[0]);
+                values.put(ReplaceType.PARTY_NAME, partyManager.getPartyFromPlayer(owner).getName());
+
+                owner.sendMessage(MessageManager.getTranslatedMessage(plugin, "successfullyKicked", values));
+                playerToKick.sendMessage(MessageManager.getTranslatedMessage(plugin, "kickedFromTheParty", values));
             }
         }
         return true;

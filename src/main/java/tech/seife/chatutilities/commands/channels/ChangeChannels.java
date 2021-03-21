@@ -1,10 +1,13 @@
 package tech.seife.chatutilities.commands.channels;
 
+import org.bukkit.Bukkit;
 import tech.seife.chatutilities.ChatUtilities;
 import tech.seife.chatutilities.channels.Channel;
+import tech.seife.chatutilities.enums.ReplaceType;
 import tech.seife.chatutilities.utils.MessageManager;
-import org.bukkit.Bukkit;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class ChangeChannels {
@@ -34,7 +37,11 @@ public class ChangeChannels {
     private void addPlayerToChannel(String channelName, UUID playerUuid) {
         Channel channel = plugin.getChannelManager().getChannel(channelName);
         channel.getPlayersInChannel().add(playerUuid);
-        Bukkit.getPlayer(playerUuid).sendMessage(MessageManager.replaceChannelName(MessageManager.getTranslatedMessage(plugin, "changedChannel"), channelName));
+
+        Map<ReplaceType, String> values = new HashMap<>();
+        values.put(ReplaceType.CHANNEL, channelName);
+
+        Bukkit.getPlayer(playerUuid).sendMessage(MessageManager.getTranslatedMessage(plugin, "changedChannel", values));
     }
 
     private void removePlayerFromCurrentChannel(UUID playerUuid) {

@@ -16,8 +16,4 @@ public final class Broadcast {
     public List<String> getMessages() {
         return messages;
     }
-
-    public long getDelay() {
-        return delay;
-    }
 }

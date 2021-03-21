@@ -14,9 +14,9 @@ import tech.seife.chatutilities.commands.UnignorePlayer;
 import tech.seife.chatutilities.commands.channels.SetChannel;
 import tech.seife.chatutilities.commands.channels.SetChannelOthers;
 import tech.seife.chatutilities.commands.party.*;
-import tech.seife.chatutilities.dao.CustomFiles;
-import tech.seife.chatutilities.dao.DataHolder;
-import tech.seife.chatutilities.dao.spamfilter.SpamFilterManager;
+import tech.seife.chatutilities.datamanager.CustomFiles;
+import tech.seife.chatutilities.datamanager.DataHolder;
+import tech.seife.chatutilities.datamanager.spamfilter.SpamFilterManager;
 import tech.seife.chatutilities.events.OnAsyncPlayerChatEvent;
 import tech.seife.chatutilities.events.OnPlayerCommandPreprocessEvent;
 import tech.seife.chatutilities.events.OnPlayerJoinEvent;
@@ -44,6 +44,8 @@ public final class ChatUtilities extends JavaPlugin {
         initialize();
         registerEvents();
         registerCommands();
+
+        customFiles.transformBannedWords();
     }
 
     private void initialize() {

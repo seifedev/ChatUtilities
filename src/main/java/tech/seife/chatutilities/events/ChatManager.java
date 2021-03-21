@@ -7,7 +7,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import tech.seife.chatutilities.ChatUtilities;
 import tech.seife.chatutilities.channels.Channel;
-import tech.seife.chatutilities.dao.spamfilter.SpamFilterManager;
+import tech.seife.chatutilities.datamanager.spamfilter.SpamFilterManager;
 
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -51,6 +51,8 @@ public class ChatManager {
 
     protected String formatMessage(String message) {
         message = replaceIp(message);
+        message = message.toLowerCase();
+        message = message.replaceAll("t", "\\t");
         if (plugin.getCustomFiles().getChannelsConfig() != null) {
             for (String bannedWord : plugin.getCustomFiles().getBannedWordsConfig().getStringList("bannedWords")) {
                 message = message.replaceAll(bannedWord, "[REDACTED]");
@@ -106,7 +108,9 @@ public class ChatManager {
 
     protected void sendMessageToNearbyPlayers(Channel channel, String message, Player player) {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            player.sendMessage(message);
+            if (plugin.getIgnoreManager().canAcceptMessage(player.getUniqueId(), player.getUniqueId(), channel.getName())) {
+                player.sendMessage(message); // The below loop doesn't include the Player, so we have to explicitly send a message to him/her.
+            }
             for (Entity entity : player.getNearbyEntities(channel.getRange() / 2, 255, channel.getRange() / 2)) {
                 if (entity instanceof Player) {
                     if (plugin.getIgnoreManager().canAcceptMessage(player.getUniqueId(), player.getUniqueId(), channel.getName())) {

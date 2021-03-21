@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import tech.seife.chatutilities.ChatUtilities;
 import tech.seife.chatutilities.channels.Channel;
-import tech.seife.chatutilities.dao.spamfilter.SpamFilterManager;
+import tech.seife.chatutilities.datamanager.spamfilter.SpamFilterManager;
 
 public final class OnAsyncPlayerChatEvent extends ChatManager implements Listener {
 

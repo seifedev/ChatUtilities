@@ -1,4 +1,4 @@
-package tech.seife.chatutilities.dao;
+package tech.seife.chatutilities.datamanager;
 
 import tech.seife.chatutilities.party.Party;
 

@@ -1,4 +1,4 @@
-package tech.seife.chatutilities.dao.spamfilter;
+package tech.seife.chatutilities.datamanager.spamfilter;
 
 import org.bukkit.Bukkit;
 import tech.seife.chatutilities.ChatUtilities;
@@ -13,10 +13,12 @@ public class SpamFilterManager {
 
     private final Set<SpamFilter> spamFilterSet;
     private final ChatUtilities plugin;
+    private final String denyMessage;
 
     public SpamFilterManager(ChatUtilities plugin) {
         spamFilterSet = new HashSet<>();
         this.plugin = plugin;
+        denyMessage = plugin.getCustomFiles().getTranslationsConfig().getString("denyMessage");
     }
 
     public boolean shouldCancelEvent(UUID playerUuid, String message, long bufferTimeInSeconds) {
@@ -34,7 +36,7 @@ public class SpamFilterManager {
                             addMessage(playerUuid, message);
                             return false;
                         } else if (entry.getKey().plusSeconds(bufferTimeInSeconds).isAfter(LocalDateTime.now())) {
-                            Bukkit.getPlayer(playerUuid).sendMessage("Please don't spam.");
+                            Bukkit.getPlayer(playerUuid).sendMessage(denyMessage);
                             return true;
                         }
                     }
