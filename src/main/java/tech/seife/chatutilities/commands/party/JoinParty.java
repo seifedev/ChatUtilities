@@ -36,7 +36,7 @@ public final class JoinParty implements CommandExecutor {
             Map<ReplaceType, String> values = new HashMap<>();
             values.put(ReplaceType.PARTY_NAME, party.getName());
 
-            player.sendMessage(MessageManager.getTranslatedMessage(plugin, "joinedTheParty", values));
+            player.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "joinedTheParty", values));
         }
         return true;
     }

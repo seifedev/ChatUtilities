@@ -39,8 +39,8 @@ public final class KickFromParty implements CommandExecutor {
                 values.put(ReplaceType.PLAYER_NAME, args[0]);
                 values.put(ReplaceType.PARTY_NAME, partyManager.getPartyFromPlayer(owner).getName());
 
-                owner.sendMessage(MessageManager.getTranslatedMessage(plugin, "successfullyKicked", values));
-                playerToKick.sendMessage(MessageManager.getTranslatedMessage(plugin, "kickedFromTheParty", values));
+                owner.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "successfullyKicked", values));
+                playerToKick.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "kickedFromTheParty", values));
             }
         }
         return true;

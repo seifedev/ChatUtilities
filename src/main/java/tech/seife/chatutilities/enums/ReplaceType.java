@@ -1,7 +1,7 @@
 package tech.seife.chatutilities.enums;
 
 public enum ReplaceType {
-    CHANNEL("%Channel%"),
+    CHANNEL("%channel%"),
     PARTY_NAME("%party%"),
     PLAYER_NAME("%player%");
 

@@ -41,7 +41,7 @@ public class ChangeChannels {
         Map<ReplaceType, String> values = new HashMap<>();
         values.put(ReplaceType.CHANNEL, channelName);
 
-        Bukkit.getPlayer(playerUuid).sendMessage(MessageManager.getTranslatedMessage(plugin, "changedChannel", values));
+        Bukkit.getPlayer(playerUuid).sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "changedChannel", values));
     }
 
     private void removePlayerFromCurrentChannel(UUID playerUuid) {

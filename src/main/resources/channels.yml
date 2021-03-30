@@ -17,7 +17,6 @@ trade:
   isPrivate: false
   textColour: "&e"
 
-
 local:
   prefix: "&3[Local]"
   range: 100

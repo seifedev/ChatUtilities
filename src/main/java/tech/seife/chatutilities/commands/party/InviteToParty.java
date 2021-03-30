@@ -54,8 +54,8 @@ public final class InviteToParty implements CommandExecutor {
         values.put(ReplaceType.PLAYER_NAME, inviter.getDisplayName());
         values.put(ReplaceType.PLAYER_NAME, invited.getDisplayName());
 
-        inviter.sendMessage(MessageManager.getTranslatedMessage(plugin, "invitedToPartyReceiver", values));
-        inviter.sendMessage(MessageManager.getTranslatedMessage(plugin, "invitedToPartySender", values));
+        inviter.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "invitedToPartyReceiver", values));
+        inviter.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "invitedToPartySender", values));
 
     }
 }

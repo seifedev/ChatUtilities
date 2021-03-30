@@ -35,11 +35,11 @@ public final class IgnorePlayerMessages implements CommandExecutor {
             Map<ReplaceType, String> values = new HashMap<>();
             values.put(ReplaceType.PLAYER_NAME, ignoredByPlayer.getName());
 
-            ignoredPlayer.sendMessage(MessageManager.getTranslatedMessage(plugin, "ignored", values));
+            ignoredPlayer.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "ignored", values));
 
             values.put(ReplaceType.PLAYER_NAME, ignoredPlayer.getName());
 
-            ignoredByPlayer.sendMessage(MessageManager.getTranslatedMessage(plugin, "toIgnored", values));
+            ignoredByPlayer.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "toIgnored", values));
 
             ignoreManager.addIgnore(ignoredByPlayer, ignoredPlayer, plugin.getChannelManager().getChannel(args[1]));
 

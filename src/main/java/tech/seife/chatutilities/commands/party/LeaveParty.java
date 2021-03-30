@@ -32,7 +32,7 @@ public final class LeaveParty implements CommandExecutor {
             Map<ReplaceType, String> values = new HashMap<>();
             values.put(ReplaceType.PLAYER_NAME, args[0]);
 
-            player.sendMessage(MessageManager.getTranslatedMessage(plugin, "leaveParty", values));
+            player.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "leaveParty", values));
         }
         return true;
     }

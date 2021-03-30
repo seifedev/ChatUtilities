@@ -34,7 +34,7 @@ public final class SetChannelOthers extends ChangeChannels implements CommandExe
                 values.put(ReplaceType.CHANNEL, args[1]);
                 values.put(ReplaceType.PLAYER_NAME, player.getName());
 
-                sender.sendMessage(MessageManager.getTranslatedMessage(plugin, "forcedChannelChangeSender", values));
+                sender.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "forcedChannelChangeSender", values));
             }
         }
         return true;

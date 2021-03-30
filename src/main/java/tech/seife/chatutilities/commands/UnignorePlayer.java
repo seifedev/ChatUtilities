@@ -36,11 +36,11 @@ public final class UnignorePlayer implements CommandExecutor {
 
             values.put(ReplaceType.PLAYER_NAME, ignored.getName());
 
-            ignored.sendMessage(MessageManager.getTranslatedMessage(plugin, "unIgnored", values));
+            ignored.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "unIgnored", values));
 
             values.put(ReplaceType.PLAYER_NAME, ignoredBy.getName());
 
-            ignoredBy.sendMessage(MessageManager.getTranslatedMessage(plugin, "toUnignored", values));
+            ignoredBy.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "toUnignored", values));
 
             ignoreManager.removeIgnore(ignoredBy, ignored, plugin.getChannelManager().getChannel(args[1]));
         }

@@ -30,7 +30,7 @@ public final class CreateParty implements CommandExecutor {
                 Map<ReplaceType, String> values = new HashMap<>();
                 values.put(ReplaceType.PARTY_NAME, args[0]);
 
-                player.sendMessage(MessageManager.getTranslatedMessage(plugin, "partyCreation", values));
+                player.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "partyCreation", values));
             }
         }
         return true;
