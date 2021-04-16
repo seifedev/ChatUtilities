@@ -19,12 +19,5 @@ public final class MessageManager {
         }
         return "There isn't a message.";
     }
-
-    public static String getTranslatedMessage(ChatUtilities plugin, String path) {
-        if (plugin.getCustomFiles() != null && plugin.getCustomFiles().getTranslationsConfig() != null && plugin.getCustomFiles().getTranslationsConfig().getString(path) != null) {
-            return ChatColor.translateAlternateColorCodes('&', plugin.getCustomFiles().getTranslationsConfig().getString(path));
-        }
-        return null;
-    }
 }
 

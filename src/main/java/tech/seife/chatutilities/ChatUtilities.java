@@ -9,8 +9,8 @@ import tech.seife.chatutilities.broadcasts.BroadcastManager;
 import tech.seife.chatutilities.channels.ChannelManager;
 import tech.seife.chatutilities.commands.Broadcast;
 import tech.seife.chatutilities.commands.IgnorePlayerMessages;
-import tech.seife.chatutilities.commands.channels.ListChannels;
 import tech.seife.chatutilities.commands.UnignorePlayer;
+import tech.seife.chatutilities.commands.channels.ListChannels;
 import tech.seife.chatutilities.commands.channels.SetChannel;
 import tech.seife.chatutilities.commands.channels.SetChannelOthers;
 import tech.seife.chatutilities.commands.party.*;
@@ -22,8 +22,11 @@ import tech.seife.chatutilities.events.OnPlayerCommandPreprocessEvent;
 import tech.seife.chatutilities.events.OnPlayerJoinEvent;
 import tech.seife.chatutilities.ignores.IgnoreManager;
 import tech.seife.chatutilities.party.PartyManager;
+import tech.seife.moderation.Moderation;
 
 public final class ChatUtilities extends JavaPlugin {
+
+    private Moderation moderation;
 
     private Chat chat;
     private CustomFiles customFiles;
@@ -58,6 +61,8 @@ public final class ChatUtilities extends JavaPlugin {
 
         broadcastManager = new BroadcastManager(this);
         broadcastManager.startBroadcast();
+
+        registerModeration();
     }
 
     private void registerEvents() {
@@ -100,6 +105,13 @@ public final class ChatUtilities extends JavaPlugin {
         getCommand("ccList").setExecutor(new ListChannels(channelManager));
     }
 
+    private void registerModeration() {
+        if (getServer().getPluginManager().isPluginEnabled("ChatUtilities")) {
+            moderation = (Moderation) Bukkit.getPluginManager().getPlugin("Moderation");
+        }
+    }
+
+
     public CustomFiles getCustomFiles() {
         return customFiles;
     }
@@ -122,5 +134,9 @@ public final class ChatUtilities extends JavaPlugin {
 
     public IgnoreManager getIgnoreManager() {
         return ignoreManager;
+    }
+
+    public Moderation getModeration() {
+        return moderation;
     }
 }

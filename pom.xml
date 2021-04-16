@@ -74,6 +74,15 @@
             <version>1.16.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>tech.seife</groupId>
+            <artifactId>Moderation</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                C:/Users/seife/.m2/repository/tech/seife/moderation/Moderation/Pre-beta/Moderation-Pre-beta.jar
+            </systemPath>
+        </dependency>
     </dependencies>
 
 

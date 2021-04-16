@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.github.seifedeveloper.chatutilities</groupId>
+  <groupId>tech.seife.chatutilities</groupId>
   <artifactId>ChatUtilities</artifactId>
-  <version>1.0</version>
+  <version>Pre-beta</version>
   <description>Chat utilities</description>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
@@ -14,6 +14,7 @@
         <directory>${basedir}/src/main/resources/</directory>
         <includes>
           <include>**/*.yml</include>
+          <include>**/*.json</include>
         </includes>
       </resource>
     </resources>
@@ -55,6 +56,13 @@
       <artifactId>spigot-api</artifactId>
       <version>1.16.1-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>tech.seife</groupId>
+      <artifactId>Moderation</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>C:/Users/seife/.m2/repository/tech/seife/moderation/Moderation/Pre-beta/Moderation-Pre-beta.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>

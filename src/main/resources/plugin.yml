@@ -3,7 +3,9 @@ name: ${project.name}
 version: ${project.version}
 description: ${project.description}
 api-version: 1.16
-depend: [Vault]
+softdepend:
+  - Vault
+  - Moderation
 
 commands:
   cc:

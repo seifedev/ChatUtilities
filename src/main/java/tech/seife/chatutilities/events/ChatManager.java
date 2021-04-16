@@ -31,13 +31,16 @@ public class ChatManager {
     protected boolean isSpam(UUID playerUuid, String message) {
         if (permission != null && permission.playerHas(Bukkit.getPlayer(playerUuid), "chatUtilities.byPassChatSpamFilter")) {
             return false;
-        } else if (!spamFilterManager.shouldCancelEvent(playerUuid, message, 30)) {
-            return false;
-        }
-        return true;
+        } else return spamFilterManager.shouldCancelEvent(playerUuid, message, 30);
     }
 
     protected void sendMessage(Player player, Channel channel, String message) {
+
+        if (plugin.getModeration().getDataManager().isPlayerMutedByUuid(player.getUniqueId(), channel.getName())) {
+            player.sendMessage("You are muted in this channel!");
+            return;
+        }
+
         if (channel.getRange() == -1 && !channel.isPrivate()) {
             sendMessageToEveryone(player.getUniqueId(), message, channel.getName());
         } else if (channel.getRange() > 0 && channel.isPrivate()) {
