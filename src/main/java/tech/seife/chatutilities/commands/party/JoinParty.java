@@ -23,14 +23,23 @@ public final class JoinParty implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player || args.length != 1 || args[0] == null || Bukkit.getPlayer(args[0]) == null)
+        if (!(sender instanceof Player) || args.length != 1 || args[0] == null)
             return true;
 
         Party party = plugin.getPartyManager().getPartyFromName(args[0]);
 
         Player player = ((Player) sender);
 
-        if (plugin.getDataHolder().getInvitedPlayers().get(party).contains(player.getUniqueId())) {
+        if (party != null) {
+            System.out.println(party.getMembers());
+        }
+
+        if (plugin.getDataHolder() != null && plugin.getDataHolder().getInvitedPlayers() != null && plugin.getDataHolder().getInvitedPlayers().get(party) != null) {
+            plugin.getDataHolder().getInvitedPlayers().get(party).forEach(System.out::println);
+        }
+
+        if (player != null && plugin.getDataHolder() != null && plugin.getDataHolder().getInvitedPlayers() != null & plugin.getDataHolder().getInvitedPlayers().get(party) != null && plugin.getDataHolder().getInvitedPlayers().get(party).contains(player.getUniqueId())) {
+            System.out.println("join party 2");
             plugin.getPartyManager().addMember(party, Bukkit.getPlayer(player.getUniqueId()));
 
             Map<ReplaceType, String> values = new HashMap<>();

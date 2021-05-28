@@ -56,10 +56,16 @@ public class ChatManager {
         message = replaceIp(message);
         message = message.toLowerCase();
         message = message.replaceAll("t", "\\t");
+
         if (plugin.getCustomFiles().getChannelsConfig() != null) {
             for (String bannedWord : plugin.getCustomFiles().getBannedWordsConfig().getStringList("bannedWords")) {
-                message = message.replaceAll(bannedWord, "[REDACTED]");
+                for (String word : message.split(" ")) {
+                    if (bannedWord.equalsIgnoreCase(word)) {
+                        message = message.replaceAll(bannedWord, "[REDACTED]");
+                    }
+                }
             }
+
         }
 
         return message;

@@ -76,7 +76,10 @@ public final class ChatUtilities extends JavaPlugin {
             return false;
         }
         RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
-        chat = rsp.getProvider();
+
+        if (rsp != null && rsp.getProvider() != null) {
+            chat = rsp.getProvider();
+        }
 
         return chat != null;
     }

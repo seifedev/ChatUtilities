@@ -1,5 +1,6 @@
 package tech.seife.chatutilities.commands.party;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,16 +22,18 @@ public final class LeaveParty implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && args.length == 0) {
             Player player = (Player) sender;
             if (plugin.getPartyManager().isPlayerOwner(player)) {
                 plugin.getPartyManager().disbandParty(player);
-            } else {
+            } else if (plugin.getPartyManager().getPartyFromPlayer(player) != null){
                 plugin.getPartyManager().removeMember(plugin.getPartyManager().getPartyFromPlayer(player), player);
+            } else {
+                player.sendMessage("You're not in a party.");
             }
 
             Map<ReplaceType, String> values = new HashMap<>();
-            values.put(ReplaceType.PLAYER_NAME, args[0]);
+            values.put(ReplaceType.PLAYER_NAME, player.getDisplayName());
 
             player.sendMessage(MessageManager.getTranslatedMessageWithReplace(plugin, "leaveParty", values));
         }

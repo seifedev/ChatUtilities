@@ -40,7 +40,9 @@ public final class PartyManager {
     }
 
     public void removeMember(Party fromParty, Player player) {
-        fromParty.getMembers().removeIf(p -> p.equals(player));
+        if (fromParty != null) {
+            fromParty.getMembers().removeIf(p -> p.equals(player));
+        }
     }
 
     public Party getPartyFromPlayer(Player player) {

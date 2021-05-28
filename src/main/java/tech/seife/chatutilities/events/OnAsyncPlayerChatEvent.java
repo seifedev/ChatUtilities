@@ -33,5 +33,4 @@ public final class OnAsyncPlayerChatEvent extends ChatManager implements Listene
             }
         }
     }
-
 }
