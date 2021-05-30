@@ -4,10 +4,11 @@ import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public final class PartyManager {
 
-    private Set<Party> parties;
+    private final Set<Party> parties;
 
     public PartyManager() {
         parties = new HashSet<>();
@@ -51,7 +52,17 @@ public final class PartyManager {
                 .filter(party -> party.getMembers().contains(player))
                 .findFirst()
                 .orElse(null);
+    }
 
+    public Party getPartyFromPlayerUuid(UUID player) {
+        for (Party party : parties) {
+            for (Player members : party.getMembers()) {
+                if (members.getUniqueId().equals(player)) {
+                    return party;
+                }
+            }
+        }
+        return null;
     }
 
     public Party getPartyFromName(String partyName) {
@@ -61,4 +72,5 @@ public final class PartyManager {
                 .findFirst()
                 .orElse(null);
     }
+
 }

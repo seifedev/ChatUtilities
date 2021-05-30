@@ -30,16 +30,11 @@ public final class JoinParty implements CommandExecutor {
 
         Player player = ((Player) sender);
 
-        if (party != null) {
-            System.out.println(party.getMembers());
-        }
-
         if (plugin.getDataHolder() != null && plugin.getDataHolder().getInvitedPlayers() != null && plugin.getDataHolder().getInvitedPlayers().get(party) != null) {
             plugin.getDataHolder().getInvitedPlayers().get(party).forEach(System.out::println);
         }
 
         if (player != null && plugin.getDataHolder() != null && plugin.getDataHolder().getInvitedPlayers() != null & plugin.getDataHolder().getInvitedPlayers().get(party) != null && plugin.getDataHolder().getInvitedPlayers().get(party).contains(player.getUniqueId())) {
-            System.out.println("join party 2");
             plugin.getPartyManager().addMember(party, Bukkit.getPlayer(player.getUniqueId()));
 
             Map<ReplaceType, String> values = new HashMap<>();

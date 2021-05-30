@@ -1,10 +1,11 @@
 package tech.seife.chatutilities.events;
 
-import tech.seife.chatutilities.ChatUtilities;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import tech.seife.chatutilities.ChatUtilities;
+import tech.seife.chatutilities.party.Party;
 
 public class OnPlayerJoinEvent implements Listener {
 
@@ -21,6 +22,17 @@ public class OnPlayerJoinEvent implements Listener {
                 plugin.getChannelManager().addPlayerToChannel(plugin.getCustomFiles().getChannelsConfig().getString("defaultChannel"), e.getPlayer().getUniqueId());
             }
         }, 1L);
+
+        if (plugin.getPartyManager().getPartyFromPlayerUuid(e.getPlayer().getUniqueId()) != null) {
+            Party party = plugin.getPartyManager().getPartyFromPlayerUuid(e.getPlayer().getUniqueId());
+            party.getMembers().remove(e.getPlayer());
+
+            party.getMembers().add(e.getPlayer());
+
+            if (party.getLeader().getUniqueId().equals(e.getPlayer().getUniqueId())) {
+                party.setLeader(e.getPlayer());
+            }
+        }
         plugin.getIgnoreManager().loadIgnores(e.getPlayer().getUniqueId());
     }
 

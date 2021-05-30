@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class Party {
 
-    private final Player leader;
+    private Player leader;
     private final String name;
     private final Set<Player> members;
 
@@ -28,5 +28,9 @@ public final class Party {
 
     public Set<Player> getMembers() {
         return members;
+    }
+
+    public void setLeader(Player leader) {
+        this.leader = leader;
     }
 }
